@@ -7,6 +7,8 @@ import foo.client.savethemarkState;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
@@ -17,8 +19,11 @@ import com.vaadin.ui.Button.ClickEvent;
 public class savethemark extends com.vaadin.ui.AbstractComponent {
 
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
+	private HorizontalLayout textfieldLayout = new HorizontalLayout();
 	private Button saveMarkButton = new Button("Save mark");
 	private Button goToMarkButton = new Button("Go to mark");
+	
+	private TextField bookmarkName = new TextField("Bookmark name");
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
 	private int bookmarkLocation = 0;
 	
@@ -35,7 +40,9 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	};
 
 	public savethemark() {
+		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
 		bookmarkVerticalLayout.addComponent(saveMarkButton);
+		bookmarkVerticalLayout.addComponent(bookmarkName);
 		bookmarkVerticalLayout.addComponent(goToMarkButton);
 		goToMarkButton.addClickListener(new ClickListener() {
 			
