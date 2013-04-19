@@ -1,5 +1,9 @@
 package foo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import foo.client.savethemarkClientRpc;
 import foo.client.savethemarkServerRpc;
 import foo.client.savethemarkState;
@@ -21,12 +25,13 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
 	private Button saveMarkButton = new Button("Save mark");
+
 	private Button goToMarkButton = new Button("Go to mark");
 	
 	private TextField bookmarkName = new TextField("Bookmark name");
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
 	private int bookmarkLocation = 0;
-	
+	private HashMap scrollLocations = new HashMap();
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
 
@@ -42,6 +47,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	public savethemark() {
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
 		bookmarkVerticalLayout.addComponent(saveMarkButton);
+<<<<<<< HEAD
 		bookmarkVerticalLayout.addComponent(bookmarkName);
 		bookmarkVerticalLayout.addComponent(goToMarkButton);
 		goToMarkButton.addClickListener(new ClickListener() {
@@ -52,12 +58,24 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 				UI.getCurrent().setScrollTop(bookmarkLocation);
 			}
 		});
+=======
+>>>>>>> f6edce9b488321d5c8cf43bc43d5e9504651cfc3
 		saveMarkButton.addClickListener(new ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				bookmarkLocation = UI.getCurrent().getScrollTop();
+				Button button = new Button("tmpName");
+				button.addClickListener(new ClickListener() {
+					
+					@Override
+					public void buttonClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+						UI.getCurrent().setScrollTop((Integer) scrollLocations.get(event.getButton()));
+					}
+				});
+				bookmarkVerticalLayout.addComponent(button);
+				scrollLocations.put(button, UI.getCurrent().getScrollTop());
 			}
 		});
 		// To receive events from the client, we register ServerRpc
