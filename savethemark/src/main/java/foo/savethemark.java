@@ -47,9 +47,8 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	public savethemark() {
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
 		bookmarkVerticalLayout.addComponent(saveMarkButton);
-<<<<<<< HEAD
 		bookmarkVerticalLayout.addComponent(bookmarkName);
-		bookmarkVerticalLayout.addComponent(goToMarkButton);
+		bookmarkVerticalLayout.addComponent(saveMarkButton);
 		goToMarkButton.addClickListener(new ClickListener() {
 			
 			@Override
@@ -58,8 +57,6 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 				UI.getCurrent().setScrollTop(bookmarkLocation);
 			}
 		});
-=======
->>>>>>> f6edce9b488321d5c8cf43bc43d5e9504651cfc3
 		saveMarkButton.addClickListener(new ClickListener() {
 			
 			@Override
