@@ -5,12 +5,18 @@ import foo.client.savethemarkServerRpc;
 import foo.client.savethemarkState;
 
 import com.vaadin.shared.MouseEventDetails;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
 
 // This is the server-side UI component that provides public API 
 // for savethemark
 public class savethemark extends com.vaadin.ui.AbstractComponent {
 
-	private int clickCount = 0;
+	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
+	private Button button = new Button("Button:D");
+	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
 
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
@@ -18,22 +24,16 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		// Event received from client - user clicked our widget
 		public void clicked(MouseEventDetails mouseDetails) {
 			
-			// Send nag message every 5:th click with ClientRpc
-			if (++clickCount % 5 == 0) {
-				getRpcProxy(savethemarkClientRpc.class)
-						.alert("Ok, that's enough!");
-			}
+			UI.getCurrent().addWindow(bookmarkWindow);
 			
-			// Update shared state. This state update is automatically 
-			// sent to the client. 
-			getState().text = "You have clicked " + clickCount + " times";
 		}
 	};
 
 	public savethemark() {
-
+		bookmarkVerticalLayout.addComponent(button);
 		// To receive events from the client, we register ServerRpc
 		registerRpc(rpc);
+		getState().text = "Bookmarks";
 	}
 
 	// We must override getState() to cast the state to savethemarkState
