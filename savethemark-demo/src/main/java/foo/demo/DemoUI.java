@@ -47,7 +47,6 @@ public class DemoUI extends UI
         
 
 		final Label label2 = new Label("Shank bacon meatball tenderloin, ground round biltong ham hock short ribs pork belly capicola boudin frankfurter pork chop flank prosciutto. Meatloaf fatback flank swine. Ball tip sausage jerky, doner pork chop meatball drumstick andouille pork belly pork loin short ribs filet mignon ham. Jerky sausage chicken frankfurter, rump pastrami swine t-bone shankle spare ribs drumstick brisket. Beef short ribs flank, bacon swine andouille jerky chuck cow spare ribs ham hock brisket ball tip corned beef ground round.");
-    	
         label2.setWidth("100%");
     	label.setWidth("100%");
         layout.setStyleName("demoContentLayout");

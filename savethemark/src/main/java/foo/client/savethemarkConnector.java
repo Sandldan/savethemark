@@ -18,7 +18,7 @@ import com.vaadin.shared.ui.Connect;
 // Connector lives in the client and the @Connect annotation specifies the
 // corresponding server-side component
 @Connect(savethemark.class)
-public class savethemarkConnector extends AbstractComponentConnector {
+public class savethemarkConnector extends AbstractComponentConnector implements ClickHandler {
 
 	// ServerRpc is used to send events to server. Communication implementation
 	// is automatically created here
@@ -31,6 +31,9 @@ public class savethemarkConnector extends AbstractComponentConnector {
 			public void alert(String message) {
 				Window.alert(message);
 			}
+			public void update(String message) {
+				
+			}
 		});
 
 		// We choose listed for mouse clicks for the widget
@@ -41,10 +44,10 @@ public class savethemarkConnector extends AbstractComponentConnector {
 								getWidget().getElement());
 				
 				// When the widget is clicked, the event is sent to server with ServerRpc
+				System.out.println("Sending rpc call");
 				rpc.clicked(mouseDetails);
 			}
 		});
-
 	}
 
 	// We must implement createWidget() to create correct type of widget
@@ -74,6 +77,15 @@ public class savethemarkConnector extends AbstractComponentConnector {
 		// State is directly readable in the client after it is set in server
 		final String text = getState().text;
 		getWidget().setText(text);
+	}
+
+	@Override
+	public void onClick(ClickEvent event) {
+		MouseEventDetails mouseDetails = MouseEventDetailsBuilder
+				.buildMouseEventDetails(event.getNativeEvent(),
+						getWidget().getElement());
+		rpc.updated(mouseDetails);
+		
 	}
 
 }

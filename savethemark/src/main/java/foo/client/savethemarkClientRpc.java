@@ -8,5 +8,7 @@ public interface savethemarkClientRpc extends ClientRpc {
 
 	// Example API: Fire up alert box in client
 	public void alert(String message);
+	
+	public void update(String message);
 
 }

@@ -35,9 +35,18 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		// Event received from client - user clicked our widget
 		public void clicked(MouseEventDetails mouseDetails) {
 			
+			System.out.println("Recieved RPC call");
 			if(!UI.getCurrent().getWindows().contains(bookmarkWindow)){
 				UI.getCurrent().addWindow(bookmarkWindow);
 			}
+		}
+	
+
+		@Override
+		public void updated(MouseEventDetails event) {
+			System.out.println("Recieved RPC call from click");
+
+			
 		}
 	};
 
