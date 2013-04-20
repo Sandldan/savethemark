@@ -9,19 +9,19 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.MouseEventDetailsBuilder;
 import com.vaadin.client.communication.RpcProxy;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractComponentConnector;
-import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.ui.Connect;
-import com.vaadin.ui.Button.ClickListener;
 
 // Connector binds client-side widget class to server-side component class
 // Connector lives in the client and the @Connect annotation specifies the
 // corresponding server-side component
+@SuppressWarnings("deprecation")
 @Connect(savethemark.class)
 public class savethemarkConnector extends AbstractComponentConnector {
 
@@ -29,6 +29,7 @@ public class savethemarkConnector extends AbstractComponentConnector {
 	// is automatically created here
 	savethemarkServerRpc rpc = RpcProxy.create(savethemarkServerRpc.class, this);
 
+	@SuppressWarnings("deprecation")
 	public savethemarkConnector() {
 		
 		// To receive RPC events from server, we register ClientRpc implementation 
@@ -38,6 +39,15 @@ public class savethemarkConnector extends AbstractComponentConnector {
 			}
 		});
 
+		
+		getWidget().addKeyPressHandler(new KeyPressHandler() {
+			
+			@Override
+			public void onKeyPress(KeyPressEvent event) {
+				// TODO Auto-generated method stub
+				rpc.keyPress(event.getUnicodeCharCode());
+			}
+		});
 		
 		getWidget().addClickHandler(new ClickHandler() {
 

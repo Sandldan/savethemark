@@ -1,9 +1,10 @@
 package foo.client;
 
+import com.google.gwt.event.dom.client.HasKeyPressHandlers;
 import com.google.gwt.user.client.ui.Button;
 
 // Extend any GWT Widget
-public class savethemarkWidget extends Button {
+public class savethemarkWidget extends Button implements HasKeyPressHandlers {
 
 	public savethemarkWidget() {
 

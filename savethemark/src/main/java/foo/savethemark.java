@@ -48,6 +48,12 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			}
 		}
 
+		@Override
+		public void keyPress(int unicodeCharCode) {
+			// TODO Auto-generated method stub
+			Page.getCurrent().getJavaScript().execute("var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } ");
+		}
+
 	};
 
 	public savethemark() {
@@ -57,6 +63,8 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
 		textfieldLayout.addComponent(bookmarkName);
 		textfieldLayout.addComponent(saveMarkButton);
+		
+		
 		saveMarkButton.addClickListener(new ClickListener() {
 			
 			/**
