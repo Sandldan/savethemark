@@ -45,9 +45,45 @@ $darkgreen: darken($green, 30%);
 		visibility:hidden !important;
 	}
 	
-	.v-window-outerheader {
-		background-color: rgb(94, 94, 94);
-		background-image: none;
+	.bookmark-window {
+		width:200px;
+		height:300px !important;
 		
+		.v-window-outerheader {
+			background-color: rgb(94, 94, 94);
+			background-image: none;
+			.v-window-header {
+				color: #40b527;
+				text-shadow: none;
+				font-weight: bold;
+				font-size: 20px;
+				line-height: 15px;
+			}
+		}
+		.v-button {
+			background-image:none;
+			.v-button-wrap {
+				background-image:none;
+			}
+		}
+		
+		.button {
+			border: 2px solid rgb(46, 46, 46);
+			font-size: 14px;
+			margin: 0px 0px 1px 1px;
+			background-color: lightgray;
+			.v-button-caption {
+				text-shadow:none;
+			}
+		}
+		.saveButton:hover {
+			background-color: lightyellow;	
+		}
+		.bookmarkGotoButton:hover {
+			background-color: lightgreen;	
+		}
+		.bookmarkDeleteButton:hover {
+			background-color: red;	
+		}
 	}
 }

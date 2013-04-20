@@ -26,7 +26,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
 	
-	private Button saveMarkButton = new Button("Save mark");
+	private Button saveMarkButton = new Button("Save");
 	private TextField bookmarkName = new TextField();
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
 	// To process events from the client, we implement ServerRpc
@@ -59,10 +59,14 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	public savethemark() {
 		
 		bookmarkWindow.setStyleName("bookmark-window");
+		bookmarkWindow.setHeight("300px");
 		bookmarkName.setInputPrompt("Bookmark name");
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
 		textfieldLayout.addComponent(bookmarkName);
 		textfieldLayout.addComponent(saveMarkButton);
+		
+		bookmarkName.setStyleName("nameLabel ");
+		saveMarkButton.setStyleName("saveButton button");
 		
 		
 		saveMarkButton.addClickListener(new ClickListener() {

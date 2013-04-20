@@ -49,6 +49,8 @@ public class Bookmark extends HorizontalLayout {
 			});
 			this.addComponent(deletButton);
 		}
+		bookmarkButton.setStyleName("bookmarkGotoButton button");
+		deletButton.setStyleName("bookmarkDeleteButton button");
 	}
 	
 	/**
@@ -69,6 +71,7 @@ public class Bookmark extends HorizontalLayout {
 			}
 		});
 		this.addComponent(bookmarkButton);
+		bookmarkButton.setStyleName("bookmarkGotoButton button");
 		
 		if(showDeleteButton){
 			deletButton = new Button("delete", new ClickListener() {

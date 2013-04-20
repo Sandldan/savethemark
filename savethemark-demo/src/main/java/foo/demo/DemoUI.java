@@ -42,11 +42,7 @@ public class DemoUI extends UI
     	paddingRight.setWidth("100%");
     	mainContent.setWidth("100%");
     	
-    	
-
     	final Label label = new Label("Bacon ipsum dolor sit amet pork belly frankfurter beef, spare ribs ribeye kielbasa strip steak venison tail turducken. Venison ham hock pork chop chicken sausage rump bresaola sirloin filet mignon salami ribeye ham. Venison swine beef capicola prosciutto ground round tenderloin ham spare ribs meatball. Bacon meatloaf venison prosciutto. Boudin tri-tip drumstick, shoulder brisket shankle leberkas shank cow. Shank doner ham turkey leberkas shankle. Jerky fatback biltong, short ribs pig frankfurter meatloaf beef ribs. Sausage venison ground round pork strip steak spare ribs pancetta doner pork chop beef hamburger turducken short loin. Chicken pig pork loin, doner andouille corned beef short loin pancetta biltong shankle short ribs turkey. Leberkas chicken shoulder beef ribs.Tail cow tenderloin, ball tip pastrami meatball meatloaf spare ribs sirloin filet mignon corned beef turducken prosciutto. Venison pig turkey doner jerky filet mignon pancetta bresaola hamburger ground round salami flank kielbasa drumstick. Bacon beef drumstick pork chop meatloaf pork short loin beef ribs boudin sausage. Bacon chuck jowl, flank meatball turkey jerky kielbasa. Pastrami chuck venison ground round capicola shoulder meatball beef ribs sausage corned beef pork belly shankle meatloaf salami tri-tip.");
-        
-
 		final Label label2 = new Label("Shank bacon meatball tenderloin, ground round biltong ham hock short ribs pork belly capicola boudin frankfurter pork chop flank prosciutto. Meatloaf fatback flank swine. Ball tip sausage jerky, doner pork chop meatball drumstick andouille pork belly pork loin short ribs filet mignon ham. Jerky sausage chicken frankfurter, rump pastrami swine t-bone shankle spare ribs drumstick brisket. Beef short ribs flank, bacon swine andouille jerky chuck cow spare ribs ham hock brisket ball tip corned beef ground round.");
     	
         label2.setWidth("100%");
