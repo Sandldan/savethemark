@@ -1,13 +1,9 @@
 package foo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import foo.client.savethemarkClientRpc;
 import foo.client.savethemarkServerRpc;
 import foo.client.savethemarkState;
 
+import com.vaadin.server.Page;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
@@ -23,8 +19,30 @@ import com.vaadin.ui.Button.ClickEvent;
 // for savethemark
 public class savethemark extends com.vaadin.ui.AbstractComponent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
+	
+	/*
+	
+	function replaceSelection(html) {
+	    var sel, range, node;
+	    if (typeof window.getSelection != "undefined") {
+	        sel = window.getSelection();
+	        if (sel.getRangeAt && sel.rangeCount) {
+	            range = window.getSelection().getRangeAt(0);
+	            range.deleteContents();
+                node = range.createContextualFragment('<span>'+window.getSelection()+'</span>');
+	            range.insertNode(node);
+	        }
+	    } 
+	}
+	
+	*/
+	
 	
 	private Button saveMarkButton = new Button("Save mark");
 	private TextField bookmarkName = new TextField();
@@ -32,16 +50,25 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		// Event received from client - user clicked our widget
 		public void clicked(MouseEventDetails mouseDetails) {
 			
 			if(!UI.getCurrent().getWindows().contains(bookmarkWindow)){
 				UI.getCurrent().addWindow(bookmarkWindow);
 			}
+			else{
+				Page.getCurrent().getJavaScript().execute("var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } ");
+			}
 		}
 	};
 
 	public savethemark() {
+		
 		bookmarkWindow.setStyleName("bookmark-window");
 		bookmarkName.setInputPrompt("Bookmark name");
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
@@ -49,6 +76,11 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		textfieldLayout.addComponent(saveMarkButton);
 		saveMarkButton.addClickListener(new ClickListener() {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void buttonClick(ClickEvent event) {
 				String caption;
