@@ -17,7 +17,14 @@ $darkgreen: darken($green, 30%);
 		background-size: 90%;
 		background-position: center center;
 		background-repeat: no-repeat;
+		font-size: 300%;
 	}
+	
+	.v-label {
+		color: red;
+		font-size: 40px;
+		line-height: 45px;
+		}
 	
 	// You can also customize your component for the demo
 	// app, but remember that these styles are not part of
