@@ -18,6 +18,10 @@ public class Bookmark extends HorizontalLayout {
 		bookmarkButton = new Button(description);
 		deletButton = new Button("delete");
 		
+		this.addComponent(bookmarkButton);
+		//TODO
+		//Add the deletbutton aswell
+		
 	}
 	
 	public String getDescription() {

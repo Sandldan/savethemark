@@ -24,10 +24,11 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
+	
 	private Button saveMarkButton = new Button("Save mark");
 	private TextField bookmarkName = new TextField();
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
-	private HashMap scrollLocations = new HashMap();
+	private HashMap <Button, Bookmark> scrollLocations = new HashMap();
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
 
@@ -50,25 +51,27 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
+				String description;
 				// TODO Auto-generated method stub
-				Button button;
 				if(!bookmarkName.getValue().isEmpty()){
-					button = new Button(bookmarkName.getValue());
+					description = bookmarkName.getValue();
 				}
 				else{
-					button = new Button("Bookmark");
+					description = "Bookmark";
 				}
+				Bookmark bookmark = new Bookmark(UI.getCurrent().getScrollTop(), description);
 				bookmarkName.setValue("");
-				button.addClickListener(new ClickListener() {
+				bookmark.getBookmarkButton().addClickListener(new ClickListener() {
 					
 					@Override
 					public void buttonClick(ClickEvent event) {
 						// TODO Auto-generated method stub
-						UI.getCurrent().setScrollTop((Integer) scrollLocations.get(event.getButton()));
+						int scrollTo = ((Bookmark) scrollLocations.get(event.getButton())).getPosition();	
+						UI.getCurrent().setScrollTop(scrollTo);
 					}
 				});
-				bookmarkVerticalLayout.addComponent(button);
-				scrollLocations.put(button, UI.getCurrent().getScrollTop());
+				bookmarkVerticalLayout.addComponent(bookmark);
+				scrollLocations.put(bookmark.getBookmarkButton(), bookmark);
 			}
 		});
 		// To receive events from the client, we register ServerRpc
