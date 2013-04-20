@@ -25,12 +25,8 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
 	private Button saveMarkButton = new Button("Save mark");
-
-	private Button goToMarkButton = new Button("Go to mark");
-	
-	private TextField bookmarkName = new TextField("Bookmark name");
+	private TextField bookmarkName = new TextField();
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
-	private int bookmarkLocation = 0;
 	private HashMap scrollLocations = new HashMap();
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
@@ -45,24 +41,24 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	};
 
 	public savethemark() {
+		bookmarkWindow.setStyleName("bookmark-window");
+		bookmarkName.setInputPrompt("Bookmark name");
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
-		bookmarkVerticalLayout.addComponent(saveMarkButton);
-		bookmarkVerticalLayout.addComponent(bookmarkName);
-		bookmarkVerticalLayout.addComponent(saveMarkButton);
-		goToMarkButton.addClickListener(new ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				UI.getCurrent().setScrollTop(bookmarkLocation);
-			}
-		});
+		textfieldLayout.addComponent(bookmarkName);
+		textfieldLayout.addComponent(saveMarkButton);
 		saveMarkButton.addClickListener(new ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
 				// TODO Auto-generated method stub
-				Button button = new Button("tmpName");
+				Button button;
+				if(!bookmarkName.getValue().isEmpty()){
+					button = new Button(bookmarkName.getValue());
+				}
+				else{
+					button = new Button("Bookmark");
+				}
+				bookmarkName.setValue("");
 				button.addClickListener(new ClickListener() {
 					
 					@Override
