@@ -1,7 +1,11 @@
 div.savethemark {
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
+	color: #40b527;
+	background-color: rgb(94, 94, 94);
+	padding: 15px;
+	font-size: 20pt;
+	font-weight: bold;
+	text-align: center;
+	position: fixed;
+	margin-left: -15%;
+	bottom: 0px;
 }
