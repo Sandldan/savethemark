@@ -30,7 +30,7 @@ $darkgreen: darken($green, 30%);
 	// app, but remember that these styles are not part of
 	// the component. To include built-in CSS for your component,
 	// edit client/styles.css under java sources
-	savethemark {
+	.savethemark {
 		color: #40b527;
 		background-color: rgb(94, 94, 94);
 		padding: 15px;
