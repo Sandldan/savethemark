@@ -11,6 +11,7 @@ import foo.client.savethemarkState;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -28,7 +29,6 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private Button saveMarkButton = new Button("Save mark");
 	private TextField bookmarkName = new TextField();
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
-	private HashMap <Button, Bookmark> scrollLocations = new HashMap();
 	// To process events from the client, we implement ServerRpc
 	private savethemarkServerRpc rpc = new savethemarkServerRpc() {
 
@@ -51,33 +51,45 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				String description;
+				String caption;
 				// TODO Auto-generated method stub
 				if(!bookmarkName.getValue().isEmpty()){
-					description = bookmarkName.getValue();
+					caption = bookmarkName.getValue();
 				}
 				else{
-					description = "Bookmark";
+					caption = "Bookmark";
 				}
-				Bookmark bookmark = new Bookmark(UI.getCurrent().getScrollTop(), description);
+				Bookmark bookmark = new Bookmark(UI.getCurrent().getScrollTop(), caption, true);
 				bookmarkName.setValue("");
-				bookmark.getBookmarkButton().addClickListener(new ClickListener() {
-					
-					@Override
-					public void buttonClick(ClickEvent event) {
-						// TODO Auto-generated method stub
-						int scrollTo = ((Bookmark) scrollLocations.get(event.getButton())).getPosition();	
-						UI.getCurrent().setScrollTop(scrollTo);
-					}
-				});
+				
 				bookmarkVerticalLayout.addComponent(bookmark);
-				scrollLocations.put(bookmark.getBookmarkButton(), bookmark);
 			}
 		});
 		// To receive events from the client, we register ServerRpc
 		registerRpc(rpc);
 		getState().text = "Bookmarks";
 	}
+	
+	/**
+	 * @param component , the component to scroll to
+	 * @param caption , the caption of the bookmark button
+	 * @param showDeleteButton , show the delete button or not
+	 */
+	public void addBookmark(Component component, String caption, boolean showDeleteButton){
+		Bookmark bookmark = new Bookmark(component, caption, showDeleteButton);
+		bookmarkVerticalLayout.addComponent(bookmark);
+	}
+	
+	/**
+	 * @param position , the position in pixels to scroll to
+	 * @param caption , the caption of the bookmark button
+	 * @param showDeleteButton , show the delete button or not
+	 */
+	public void addBookmark(int position, String caption, boolean showDeleteButton){
+		Bookmark bookmark = new Bookmark(position, caption, showDeleteButton);
+		bookmarkVerticalLayout.addComponent(bookmark);
+	}
+	
 
 	// We must override getState() to cast the state to savethemarkState
 	@Override

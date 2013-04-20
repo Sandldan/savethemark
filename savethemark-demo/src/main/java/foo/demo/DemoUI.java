@@ -21,7 +21,8 @@ public class DemoUI extends UI
     	
     	// Initialize our new UI component
     	final savethemark savethemark = new savethemark();
-            	
+        savethemark.addBookmark(savethemark, "Top", false);
+        savethemark.addBookmark(10, "10px down", true);
     	// Show it in the middle of the screen
     	final VerticalLayout layout = new VerticalLayout();
     	final Label label = new Label("Bacon ipsum dolor sit amet fatback ball tip short loin tail tongue pork belly sirloin pork loin. Capicola flank beef ribs cow biltong short ribs, hamburger tri-tip venison. Pastrami brisket sirloin rump shankle chuck ham hock. Pig sausage ball tip pork loin. Pork jerky chuck venison pork chop sirloin bacon corned beef filet mignon meatball jowl tongue tri-tip doner ball tip. Pancetta beef ribs ribeye chicken, turkey spare ribs fatback shank ham chuck short loin beef ground round capicola meatloaf. Spare ribs shankle salami, meatball kielbasa boudin flank cow.");
