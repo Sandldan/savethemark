@@ -1,5 +1,6 @@
 package foo.client;
 
+import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.communication.ServerRpc;
 
@@ -8,5 +9,6 @@ public interface savethemarkServerRpc extends ServerRpc {
 
 	// Example API: Widget click is clicked
 	public void clicked(MouseEventDetails mouseDetails);
+	
 
 }

@@ -26,24 +26,6 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
 	
-	/*
-	
-	function replaceSelection(html) {
-	    var sel, range, node;
-	    if (typeof window.getSelection != "undefined") {
-	        sel = window.getSelection();
-	        if (sel.getRangeAt && sel.rangeCount) {
-	            range = window.getSelection().getRangeAt(0);
-	            range.deleteContents();
-                node = range.createContextualFragment('<span>'+window.getSelection()+'</span>');
-	            range.insertNode(node);
-	        }
-	    } 
-	}
-	
-	*/
-	
-	
 	private Button saveMarkButton = new Button("Save mark");
 	private TextField bookmarkName = new TextField();
 	private Window bookmarkWindow = new Window("Bookmarks", bookmarkVerticalLayout);
@@ -65,6 +47,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 				Page.getCurrent().getJavaScript().execute("var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } ");
 			}
 		}
+
 	};
 
 	public savethemark() {

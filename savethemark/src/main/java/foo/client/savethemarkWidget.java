@@ -1,11 +1,12 @@
 package foo.client;
 
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Button;
 
 // Extend any GWT Widget
-public class savethemarkWidget extends Label{
+public class savethemarkWidget extends Button {
 
 	public savethemarkWidget() {
+
 		// CSS class-name should not be v- prefixed
 		setStyleName("savethemark");
 
