@@ -11,8 +11,9 @@ import com.vaadin.ui.VerticalLayout;
 public class Bookmark extends HorizontalLayout {
 
 	private String caption;
-	private int position; 
+	private int position = -1; 
 	private Component component;
+	private boolean showDeleteButton;
 	
 	private Button bookmarkButton;
 	private Button deletButton;
@@ -25,6 +26,7 @@ public class Bookmark extends HorizontalLayout {
 	public Bookmark(int position, String caption, boolean showDeleteButton) {
 		this.position = position;
 		this.caption = caption;
+		this.showDeleteButton = showDeleteButton;
 		
 		bookmarkButton = new Button(caption, new ClickListener() {
 			
@@ -121,6 +123,10 @@ public class Bookmark extends HorizontalLayout {
 	 */
 	public void setComponent(Component component) {
 		this.component = component;
+	}
+
+	public boolean isShowDeleteButton() {
+		return showDeleteButton;
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package foo.demo;
 
+import foo.Bookmark;
 import foo.savethemark;
 
 import com.vaadin.annotations.Theme;
@@ -65,7 +66,23 @@ public class DemoUI extends UI
         mainContent.addComponent(label);
         mainContent.addComponent(label2);
                 
+        /*
+        //TESTING SAVELOAD BOOKMARK
+        Bookmark tmp1 = savethemark.addBookmark(20, "20px down", true);
+        Bookmark tmp2 = savethemark.addBookmark(30, "30px down", false);
+        
+        String[] tmp = new String[3];
+        tmp = savethemark.saveBookmark(tmp1);
 
+        String[] tm2p = new String[3];
+        tm2p = savethemark.saveBookmark(tmp2);
+        
+        savethemark.removeBookmark(tmp1);
+        savethemark.removeBookmark(tmp2);
+        
+        savethemark.loadBookmark(tmp);
+        savethemark.loadBookmark(tm2p);
+		*/
     }
 
 }

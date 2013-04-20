@@ -74,20 +74,57 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	 * @param component , the component to scroll to
 	 * @param caption , the caption of the bookmark button
 	 * @param showDeleteButton , show the delete button or not
+	 * @return Bookmark , the bookmark created
 	 */
-	public void addBookmark(Component component, String caption, boolean showDeleteButton){
+	public Bookmark addBookmark(Component component, String caption, boolean showDeleteButton){
 		Bookmark bookmark = new Bookmark(component, caption, showDeleteButton);
 		bookmarkVerticalLayout.addComponent(bookmark);
+		return bookmark;
 	}
 	
 	/**
 	 * @param position , the position in pixels to scroll to
 	 * @param caption , the caption of the bookmark button
 	 * @param showDeleteButton , show the delete button or not
+	 * @return Bookmark , the bookmark created
 	 */
-	public void addBookmark(int position, String caption, boolean showDeleteButton){
+	public Bookmark addBookmark(int position, String caption, boolean showDeleteButton){
 		Bookmark bookmark = new Bookmark(position, caption, showDeleteButton);
 		bookmarkVerticalLayout.addComponent(bookmark);
+		return bookmark;
+	}
+	
+	public void removeBookmark(Bookmark bookmark){
+		bookmarkVerticalLayout.removeComponent(bookmark);
+	}
+	
+	/**
+	 * @param bookmarkdata , the array recieved from calling saveBookmark
+	 * @return true if successful, false if not
+	 */
+	public boolean loadBookmark(String[] bookmarkdata){
+		try{
+			Bookmark bookmark = new Bookmark(Integer.parseInt(bookmarkdata[0]), bookmarkdata[1], Boolean.parseBoolean(bookmarkdata[2]));
+			bookmarkVerticalLayout.addComponent(bookmark);
+		}catch(Exception e){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * @param bookmark , the bookmark you want to store NOTE: you can only store bookmarks that use position, bookmark(position, caption, showdeletebutton)
+	 * @return the string array containing the data if successful, null if not
+	 */
+	public String[] saveBookmark(Bookmark bookmark){
+		if(bookmark.getPosition() == -1){
+			return null;
+		}
+		String[] tmp = new String[3];
+		tmp[0] = "" + bookmark.getPosition();
+		tmp[1] = bookmark.getCaption();
+		tmp[2] = "" + bookmark.isShowDeleteButton();
+		return tmp;
 	}
 	
 
