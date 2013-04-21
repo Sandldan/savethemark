@@ -62,6 +62,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		bookmarkWindow.setHeight("300px");
 		bookmarkName.setInputPrompt("Bookmark name");
 		bookmarkVerticalLayout.addComponentAsFirst(textfieldLayout);
+		bookmarkVerticalLayout.setWidth("200px");
 		textfieldLayout.addComponent(bookmarkName);
 		textfieldLayout.addComponent(saveMarkButton);
 		
