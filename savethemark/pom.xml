@@ -5,8 +5,8 @@
 	<groupId>org.dbale</groupId>
 	<artifactId>savethemark</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>savethemark Add-on</name>
+	<version>0.0.1</version>
+	<name>savethemark</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,10 +16,10 @@
 		<!-- ZIP Manifest fields -->
 		<Implementation-Version>${project.version}</Implementation-Version>
 		<!-- Must not change this because of the Directory -->
-		<Implementation-Title>savethemark</Implementation-Title>
+		<Implementation-Title>${project.name}</Implementation-Title>
 		<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
 		<Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
-		<Vaadin-Addon>vaadin-${artifactId}-${project.version}.jar</Vaadin-Addon>
+		<Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
 
     <!--     
