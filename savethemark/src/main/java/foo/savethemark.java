@@ -12,10 +12,12 @@ import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.event.ShortcutAction.ModifierKey;
 import com.vaadin.server.Page;
 import com.vaadin.shared.MouseEventDetails;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -57,6 +59,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	};
 
 	public savethemark() {
+		/*
 		UI.getCurrent().addActionHandler(new Handler() {
 			
 			@Override
@@ -79,6 +82,9 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 				return new Action[] { highLightTextAction };
 			}
 		});
+		*/
+		Label js = new Label("<script> document.onkeypress = returnKey; function returnKey(evt) { var evt  = (evt) ? evt : ((event) ? event : null); if (evt.keyCode == 72) { var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } } }</script>");
+		js.setContentMode(ContentMode.HTML);
 		bookmarkWindow.setStyleName("bookmark-window");
 		bookmarkWindow.setHeight("300px");
 		
