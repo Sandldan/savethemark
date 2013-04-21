@@ -9,7 +9,6 @@ public interface savethemarkServerRpc extends ServerRpc {
 	// Example API: Widget click is clicked
 	public void clicked(MouseEventDetails mouseDetails);
 
-	public void keyPress(int unicodeCharCode);
 	
 
 }

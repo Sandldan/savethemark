@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,14 +41,6 @@ public class savethemarkConnector extends AbstractComponentConnector {
 		});
 
 		
-		getWidget().addKeyPressHandler(new KeyPressHandler() {
-			
-			@Override
-			public void onKeyPress(KeyPressEvent event) {
-				// TODO Auto-generated method stub
-				rpc.keyPress(event.getUnicodeCharCode());
-			}
-		});
 		
 		getWidget().addClickHandler(new ClickHandler() {
 
