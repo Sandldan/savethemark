@@ -5,17 +5,12 @@ import java.util.ArrayList;
 import foo.client.savethemarkServerRpc;
 import foo.client.savethemarkState;
 
-import com.vaadin.event.Action;
-import com.vaadin.event.ShortcutAction;
-import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.Page;
 import com.vaadin.shared.MouseEventDetails;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -61,33 +56,8 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	};
 
 	public savethemark() {
-		/*
-		UI.getCurrent().addActionHandler(new Handler() {
-			
-			@Override
-			public void handleAction(Action action, Object sender, Object target) {
-				
-				// TODO Auto-generated method stub
-				if(action == highLightTextAction){
-					highLightText();
-				}
-			}
-
-			private void highLightText() {
-				// TODO Auto-generated method stub
-				Page.getCurrent().getJavaScript().execute("var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } ");
-			}
-
-			@Override
-			public Action[] getActions(Object target, Object sender) {
-				// TODO Auto-generated method stub
-				return new Action[] { highLightTextAction };
-			}
-		});
-		*/
-		Label js = new Label("<script src='http://code.jquery.com/jquery-1.4.4.js'></script><script>document.onkeypress = function (evt) { console.log('testing ' + evt.keyCode); if (evt.keyCode== 72) { console.log('if running'); var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection();  text = window.getSelection().toString(); if (sel.getRangeAt(0) && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } } }</script>");
-		js.setContentMode(ContentMode.HTML);
 		
+		Page.getCurrent().getJavaScript().execute("document.onkeypress = function (evt) { console.log('testing ' + evt.keyCode); if (evt.keyCode== 72) { console.log('if running'); var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection();  text = window.getSelection().toString(); if (sel.getRangeAt(0) && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } } }");
 		bookmarkWindow.setStyleName("bookmark-window");
 		bookmarkWindow.setHeight("300px");
 		
@@ -100,7 +70,6 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		bookmarkName.setStyleName("nameLabel ");
 		saveMarkButton.setStyleName("saveButton button");
 		
-		bookmarkVerticalLayout.addComponent(js);
 		
 		saveMarkButton.addClickListener(new ClickListener() {
 			
