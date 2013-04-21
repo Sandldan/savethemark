@@ -11,8 +11,8 @@
 }
 
 .bookmark-window {
-		width:200px;
-		height:300px !important;
+		width:205px !important;
+		height:300px;
 }
 .bookmark-window .v-window-outerheader {
 	background-color: black;

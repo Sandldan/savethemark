@@ -52,6 +52,9 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			if(!UI.getCurrent().getWindows().contains(bookmarkWindow)){
 				UI.getCurrent().addWindow(bookmarkWindow);
 			}
+			else  {
+				Page.getCurrent().getJavaScript().execute("var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } ");
+			}
 		}
 
 	};
