@@ -4,7 +4,7 @@ savethemark is an UI component add-on for Vaadin 7.
 
 ## Online demo
 
-Try the add-on demo at <url of the online demo>
+Try the add-on demo at http://env-9841326.jelastic.servint.net/savethemark/
 
 ## Download release
 
@@ -12,7 +12,7 @@ Official releases of this add-on are available at Vaadin Directory. For Maven in
 
 ## Building and running demo
 
-git clone <url of the savethemark repository>
+git clone https://github.com/Sandldan/savethemark
 mvn clean install
 cd demo
 mvn jetty:run
@@ -58,8 +58,7 @@ Another way of debugging client-side is superdev mode. To enable it, uncomment d
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- ...
-- ...
+
 
 ## Issue tracking
 
@@ -79,7 +78,7 @@ Contributions are welcome, but there are no guarantees that they are accepted as
 
 Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
-savethemark is written by <...>
+savethemark is written by Daniel Wärnå, André Johnson, Mattias Berg
 
 # Developer Guide
 
