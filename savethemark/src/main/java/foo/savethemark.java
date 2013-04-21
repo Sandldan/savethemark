@@ -1,15 +1,13 @@
 package foo;
 
+import java.util.ArrayList;
+
 import foo.client.savethemarkServerRpc;
 import foo.client.savethemarkState;
 
-import com.google.gwt.event.dom.client.HasKeyPressHandlers;
-import com.google.gwt.thirdparty.guava.common.util.concurrent.SettableFuture;
 import com.vaadin.event.Action;
-import com.vaadin.event.Action.Handler;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.event.ShortcutAction.KeyCode;
-import com.vaadin.event.ShortcutAction.ModifierKey;
 import com.vaadin.server.Page;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.shared.ui.label.ContentMode;
@@ -34,8 +32,9 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	private static final long serialVersionUID = 1L;
 	private VerticalLayout bookmarkVerticalLayout = new VerticalLayout();
 	private HorizontalLayout textfieldLayout = new HorizontalLayout();
+	private ArrayList<Bookmark> bookmarkList = new ArrayList<Bookmark>();
 	
-	private Action highLightTextAction = new ShortcutAction("highlighttext", KeyCode.H, new int[] {  });
+	//private Action highLightTextAction = new ShortcutAction("highlighttext", KeyCode.H, new int[] {  });
 	
 	private Button saveMarkButton = new Button("Save");
 	private TextField bookmarkName = new TextField();
@@ -86,8 +85,9 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			}
 		});
 		*/
-		Label js = new Label("<script> function (evt) { console.log('testing ' + evt.keyCode); if (evt.keyCode== 72) { console.log('if running'); var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection();  text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style='background-color: yellow;'>'+text+'</span>'); range.insertNode(node); } } } }</script>");
+		Label js = new Label("<script src='http://code.jquery.com/jquery-1.4.4.js'></script><script>document.onkeypress = function (evt) { console.log('testing ' + evt.keyCode); if (evt.keyCode== 72) { console.log('if running'); var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection();  text = window.getSelection().toString(); if (sel.getRangeAt(0) && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } } }</script>");
 		js.setContentMode(ContentMode.HTML);
+		
 		bookmarkWindow.setStyleName("bookmark-window");
 		bookmarkWindow.setHeight("300px");
 		
@@ -139,6 +139,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	public Bookmark addBookmark(Component component, String caption, boolean showDeleteButton){
 		Bookmark bookmark = new Bookmark(component, caption, showDeleteButton);
 		bookmarkVerticalLayout.addComponent(bookmark);
+		bookmarkList.add(bookmark);
 		return bookmark;
 	}
 	
@@ -151,6 +152,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 	public Bookmark addBookmark(int position, String caption, boolean showDeleteButton){
 		Bookmark bookmark = new Bookmark(position, caption, showDeleteButton);
 		bookmarkVerticalLayout.addComponent(bookmark);
+		bookmarkList.add(bookmark);
 		return bookmark;
 	}
 	
@@ -166,6 +168,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		try{
 			Bookmark bookmark = new Bookmark(Integer.parseInt(bookmarkdata[0]), bookmarkdata[1], Boolean.parseBoolean(bookmarkdata[2]));
 			bookmarkVerticalLayout.addComponent(bookmark);
+			bookmarkList.add(bookmark);
 		}catch(Exception e){
 			return false;
 		}
@@ -187,6 +190,10 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		return tmp;
 	}
 	
+
+	public ArrayList<Bookmark> getBookmarkList() {
+		return bookmarkList;
+	}
 
 	// We must override getState() to cast the state to savethemarkState
 	@Override

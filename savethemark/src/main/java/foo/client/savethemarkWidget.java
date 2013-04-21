@@ -9,7 +9,7 @@ public class savethemarkWidget extends Button {
 
 		// CSS class-name should not be v- prefixed
 		setStyleName("savethemark");
-
+		
 		// State is set to widget in savethemarkConnector
 		
 	}
