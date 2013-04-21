@@ -86,7 +86,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 			}
 		});
 		*/
-		Label js = new Label("<script> document.onkeypress = returnKey; function returnKey(evt) { var evt  = (evt) ? evt : ((event) ? event : null); if (evt.keyCode == 72) { var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection(); text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style=\"background-color: yellow;\">'+text+'</span>'); range.insertNode(node); } } } }</script>");
+		Label js = new Label("<script> function (evt) { console.log('testing ' + evt.keyCode); if (evt.keyCode== 72) { console.log('if running'); var text, sel, range, node; if (typeof window.getSelection != 'undefined') { sel = window.getSelection();  text = window.getSelection().toString(); if (sel.getRangeAt && sel.rangeCount) { range = window.getSelection().getRangeAt(0); range.deleteContents(); node = range.createContextualFragment('<span style='background-color: yellow;'>'+text+'</span>'); range.insertNode(node); } } } }</script>");
 		js.setContentMode(ContentMode.HTML);
 		bookmarkWindow.setStyleName("bookmark-window");
 		bookmarkWindow.setHeight("300px");
@@ -100,6 +100,7 @@ public class savethemark extends com.vaadin.ui.AbstractComponent {
 		bookmarkName.setStyleName("nameLabel ");
 		saveMarkButton.setStyleName("saveButton button");
 		
+		bookmarkVerticalLayout.addComponent(js);
 		
 		saveMarkButton.addClickListener(new ClickListener() {
 			
