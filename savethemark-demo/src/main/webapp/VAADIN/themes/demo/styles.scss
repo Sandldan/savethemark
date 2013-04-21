@@ -12,7 +12,7 @@ $darkgreen: darken($green, 30%);
 
 	// You can style your demo app right here
 	.demoContentLayout {
-		background-color: $gray;
+		background-color: #E6E6E6;
 		background-image: url(images/radial-gradient.png);
 		background-size: 90%;
 		background-position: center center;
@@ -21,7 +21,7 @@ $darkgreen: darken($green, 30%);
 	}
 	
 	.v-label {
-		color: red;
+		color: black;
 		font-size: 40px;
 		line-height: 45px;
 		}
@@ -30,9 +30,9 @@ $darkgreen: darken($green, 30%);
 	// app, but remember that these styles are not part of
 	// the component. To include built-in CSS for your component,
 	// edit client/styles.css under java sources
-	.savethemark {
+	/*.savethemark {
 		color: #40b527;
-		background-color: rgb(94, 94, 94);
+		background-color: white;
 		padding: 15px;
 		font-size: 20pt;
 		font-weight: bold;
@@ -60,6 +60,9 @@ $darkgreen: darken($green, 30%);
 				line-height: 15px;
 			}
 		}
+		.v-window-contents {
+			background-color:lightgray
+		}
 		.v-button {
 			background-image:none;
 			.v-button-wrap {
@@ -70,8 +73,9 @@ $darkgreen: darken($green, 30%);
 		.button {
 			border: 2px solid rgb(46, 46, 46);
 			font-size: 14px;
+			font-weight: bold;
 			margin: 0px 0px 1px 1px;
-			background-color: lightgray;
+			background-color: rgb(243, 243, 243);
 			.v-button-caption {
 				text-shadow:none;
 			}
@@ -79,11 +83,18 @@ $darkgreen: darken($green, 30%);
 		.saveButton:hover {
 			background-color: lightyellow;	
 		}
+		.bookmarkGotoButton {
+			width:120px;
+		}
 		.bookmarkGotoButton:hover {
 			background-color: lightgreen;	
 		}
 		.bookmarkDeleteButton:hover {
 			background-color: red;	
 		}
-	}
+		
+		.nameLabel {
+			margin-top:1px;
+		}
+	}*/
 }
