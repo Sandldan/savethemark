@@ -1,11 +1,69 @@
-div.savethemark {
+.savethemark {
 	color: #40b527;
-	background-color: rgb(94, 94, 94);
+	background-color: white;
 	padding: 15px;
 	font-size: 20pt;
 	font-weight: bold;
 	text-align: center;
 	position: fixed;
-	margin-left: -15%;
+	margin-left: -14%;
 	bottom: 0px;
 }
+
+.bookmark-window {
+		width:200px;
+		height:300px !important;
+}
+.bookmark-window .v-window-outerheader {
+	background-color: black;
+	background-image: none;
+}
+.bookmark-window .v-window-outerheader .v-window-header {
+	color: white;
+	text-shadow: none;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 15px;
+	
+}
+.bookmark-window .v-window-contents {
+	background-color: white
+}
+.bookmark-window .v-button {
+	background-image:none;
+}
+.bookmark-window .v-button-wrap {
+	background-image:none;
+}
+
+
+.bookmark-window .button {
+	border: 1px solid rgb(46, 46, 46);
+	font-size: 14px ;
+	font-weight: bold;
+	margin: 0px 0px 1px 1px;
+	background-color: rgb(243, 243, 243);
+}
+.button	.v-button-caption {
+	text-shadow:none;
+}
+	
+.saveButton:hover {
+	background-color: lightyellow;	
+}
+.bookmarkGotoButton {
+	width:120px;
+}
+.bookmarkGotoButton:hover {
+	background-color: lightgreen;	
+}
+.bookmarkDeleteButton:hover {
+	background-color: red;	
+}
+
+.nameLabel {
+	margin-top:1px;
+}
+
+
+

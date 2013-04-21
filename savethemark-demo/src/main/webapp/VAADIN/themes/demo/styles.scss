@@ -12,7 +12,7 @@ $darkgreen: darken($green, 30%);
 
 	// You can style your demo app right here
 	.demoContentLayout {
-		background-color: $gray;
+		background-color: #E6E6E6;
 		background-image: url(images/radial-gradient.png);
 		background-size: 90%;
 		background-position: center center;
@@ -21,7 +21,7 @@ $darkgreen: darken($green, 30%);
 	}
 	
 	.v-label {
-		color: red;
+		color: black;
 		font-size: 40px;
 		line-height: 45px;
 		}
@@ -30,9 +30,9 @@ $darkgreen: darken($green, 30%);
 	// app, but remember that these styles are not part of
 	// the component. To include built-in CSS for your component,
 	// edit client/styles.css under java sources
-	.savethemark {
+	/*.savethemark {
 		color: #40b527;
-		background-color: rgb(94, 94, 94);
+		background-color: white;
 		padding: 15px;
 		font-size: 20pt;
 		font-weight: bold;
@@ -96,5 +96,5 @@ $darkgreen: darken($green, 30%);
 		.nameLabel {
 			margin-top:1px;
 		}
-	}
+	}*/
 }

@@ -39,7 +39,7 @@ public class Bookmark extends HorizontalLayout {
 		this.addComponent(bookmarkButton);
 		
 		if(showDeleteButton){
-			deletButton = new Button("delete", new ClickListener() {
+			deletButton = new Button("Delete", new ClickListener() {
 				
 				@Override
 				public void buttonClick(ClickEvent event) {
@@ -74,7 +74,7 @@ public class Bookmark extends HorizontalLayout {
 		bookmarkButton.setStyleName("bookmarkGotoButton button");
 		
 		if(showDeleteButton){
-			deletButton = new Button("delete", new ClickListener() {
+			deletButton = new Button("Delete", new ClickListener() {
 				
 				@Override
 				public void buttonClick(ClickEvent event) {
